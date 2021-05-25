@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
+  # respond_to :json
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
@@ -10,37 +11,41 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  def create
-    build_resource(sign_up_params)
-    resource.save!
-    # sign_up method allows the sign_in token to be dispatched
-    sign_up(resource_name, resource) if resource.persisted?
-    render json: resource, status: :created
-  end
+  # def create
+  #   # build_resource(sign_up_params)
+  #   # resource.save!
+  #   # # sign_up method allows the sign_in token to be dispatched
+  #   # sign_up(resource_name, resource) if resource.persisted?
+  #   super
+  #   render json: resource, status: :created
+  # end
 
   # GET /resource/edit
   # def edit
-  #   super
+  #   # super
+  #   render json: resource, status: :ok
   # end
 
   # PUT /resource
-  def update
-    resource_updated = update_resource(resource, account_update_params)
+  # def update
+  #   # resource_updated = update_resource(resource, account_update_params)
 
-    if resource_updated
-      render json: resource, status: :ok
-    else
-      render json: { errors: resource.errors }, status: :unprocessable_entity
-    end
-  end
+  #   # if resource_updated
+  #   #   render json: resource, status: :ok
+  #   # else
+  #   #   render json: { errors: resource.errors }, status: :unprocessable_entity
+  #   # end
+  #   super
+  #   render json: resource, status: :ok
+  # end
 
   # DELETE /resource
-  def destroy
-    super
-    # resource.destroy!
-    # Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
-    head :no_content
-  end
+  # def destroy
+  #   super
+  #   # resource.destroy!
+  #   # Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
+  #   head :no_content
+  # end
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
